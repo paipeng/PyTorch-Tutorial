@@ -36,6 +36,8 @@ TEST_DATA_PATH = "./images/"
 TRANSFORM_IMG = transforms.Compose([
     #transforms.Resize(640),
     #transforms.CenterCrop(256),
+    #transforms.RandomGrayscale(1),
+    transforms.Grayscale(),
     transforms.ToTensor(),
     #transforms.Normalize(mean=[0.485, 0.456, 0.406],
     #                     std=[0.229, 0.224, 0.225] )
@@ -62,7 +64,7 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         self.conv1 = nn.Sequential(         # input shape (1, 28, 28)
             nn.Conv2d(
-                in_channels=3,              # input height
+                in_channels=1,              # input height
                 out_channels=16,            # n_filters
                 kernel_size=5,              # filter size
                 stride=1,                   # filter movement/step
