@@ -66,15 +66,15 @@ class CNN(nn.Module):
             nn.Conv2d(
                 in_channels=1,              # input height
                 out_channels=16,            # n_filters
-                kernel_size=5,              # filter size
+                kernel_size=6,              # filter size
                 stride=1,                   # filter movement/step
-                padding=2,                  # if want same width and length of this image after Conv2d, padding=(kernel_size-1)/2 if stride=1
+                padding=3,                  # if want same width and length of this image after Conv2d, padding=(kernel_size-1)/2 if stride=1
             ),                              # output shape (16, 28, 28)
             nn.ReLU(),                      # activation
             nn.MaxPool2d(kernel_size=2),    # choose max value in 2x2 area, output shape (16, 14, 14)
         )
         self.conv2 = nn.Sequential(         # input shape (16, 14, 14)
-            nn.Conv2d(16, 32, 5, 1, 2),     # output shape (32, 14, 14)
+            nn.Conv2d(16, 32, 6, 1, 3),     # output shape (32, 14, 14)
             nn.ReLU(),                      # activation
             nn.MaxPool2d(2),                # output shape (32, 7, 7)
         )
