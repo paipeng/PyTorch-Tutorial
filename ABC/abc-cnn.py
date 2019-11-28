@@ -83,7 +83,11 @@ class CNN(nn.Module):
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2(x)
+
         x = x.view(x.size(0), -1)           # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
+        # the same as  out = out.reshape(out.size[0],-1)
+
+
         output = self.out(x)
         return output, x    # return x for visualization
 
